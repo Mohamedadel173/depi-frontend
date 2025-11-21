@@ -1,0 +1,198 @@
+/* --- GLOBAL RESETS --- */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* --- APP LAYOUT --- */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; 
+  width: 100vw;
+  background-color: #f3f4f6;
+  overflow: hidden; 
+}
+
+/* --- HEADER --- */
+.app-header {
+  background-color: white;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  flex-shrink: 0;
+  height: 60px; 
+}
+
+.app-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #370d5f;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* --- BUTTONS --- */
+.btn-run {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  background-color: #9333ea;
+  color: white;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-run:hover {
+  background-color: #7e22ce;
+}
+
+.icon {
+  height: 1.25rem;
+  width: 1.25rem;
+  margin-right: 0.5rem;
+}
+
+/* --- MAIN WORKSPACE (The Container for Editor & Output) --- */
+.main-workspace {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  
+  /* MOBILE DEFAULT: Stack them vertically */
+  flex-direction: column; 
+}
+
+/* --- LEFT PANEL (EDITOR) --- */
+.editor-panel {
+  position: relative;
+  border-right: 1px solid #d1d5db;
+  overflow: hidden;
+  background-color: #e5e7eb;
+  min-width: 0;
+
+  /* MOBILE DEFAULT: Takes 60% of the height */
+  height: 60%; 
+  width: 100%;
+}
+
+.blockly-injection-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.blockly-injection-div .blocklySvg {
+  box-sizing: content-box !important;
+  overflow: hidden !important;
+  outline: none;
+}
+
+/* --- RIGHT PANEL (OUTPUT) --- */
+.output-panel {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-left: 1px solid #ddd;
+  
+  /* MOBILE DEFAULT: Takes remaining 40% height */
+  height: 40%;
+  width: 100%;
+}
+
+/* --- TABS --- */
+.tabs-header {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
+  height: 48px;
+}
+
+.tab-button {
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #6b7280;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-button.active {
+  border-bottom-color: #370d5f;
+  color: #370d5f;
+}
+
+.tab-content-container {
+  flex: 1;
+  position: relative;
+  background-color: #370d5f;
+  color: #fde047;
+  overflow: hidden;
+}
+
+.tab-pane {
+  position: absolute;
+  inset: 0;
+  padding: 1rem;
+  overflow-y: auto;
+  display: none;
+}
+
+.tab-pane.visible {
+  display: block;
+}
+
+.code-pre, .console-output {
+  white-space: pre-wrap;
+  margin: 0;
+  font-family: monospace;
+}
+
+/* ========================================= */
+/* MEDIA QUERY (DESKTOP)             */
+/* ========================================= */
+
+@media (min-width: 768px) {
+  
+  /* Switch to Row Layout (Side by Side) */
+  .main-workspace {
+    flex-direction: row;
+  }
+
+  /* Editor takes all available space */
+  .editor-panel {
+    height: 100%; /* Full height */
+    flex: 1;      /* Grow to fill space */
+  }
+
+  /* Output takes fixed width */
+  .output-panel {
+    height: 100%; /* Full height */
+    width: 35%;   /* Fixed width */
+    border-left: 1px solid #d1d5db;
+    border-top: none;
+  }
+}

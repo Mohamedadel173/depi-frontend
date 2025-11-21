@@ -8,7 +8,8 @@ import About from "./sections/About";
 import Testimonial from "./sections/Testimonial";
 import Contact from "./sections/Contact";
 import Footer from './sections/Footer';
-
+import './Blockly.css';
+import BlocklyComponent from './Blockly';
 // استيراد مكونات المستويات والاختبارات
 import Levels from "./components/Levels";
 import Quiz from "./components/Quiz";
