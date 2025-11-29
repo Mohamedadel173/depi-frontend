@@ -29,9 +29,9 @@ export const validateRegister = [
     .withMessage("Password must have 8 chars, 1 uppercase, 1 lowercase, 1 number, 1 symbol"),
 
   // Birthday
-  body("birthday")
-    .isDate()
-    .withMessage("Invalid date format (expected: YYYY-MM-DD)"),
+  // body("birthday")
+  //   .isDate()
+  //   .withMessage("Invalid date format (expected: YYYY-MM-DD)"),
 
   // Gender
   body("gender")
