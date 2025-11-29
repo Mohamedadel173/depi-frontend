@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { register } from "../api.js"; // دالة التسجيل من API
+import { register } from "../api.js"; // دالة التسجيل من الـ API
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterPage() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     username: "",
@@ -11,14 +14,10 @@ export default function RegisterPage() {
     gender: "",
     birthday: "2004-01-01",
     role: "user",
-    isVerified: false,
-    purchasedLevels: []
   });
 
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-
-  const navigate = (path) => { window.location.pathname = path; };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -33,20 +32,19 @@ export default function RegisterPage() {
     setLoading(true);
     setErrorMsg("");
 
-    console.log("Sending registration:", formData);
-
     try {
       const { ok, data } = await register(formData);
 
       if (!ok) {
         setErrorMsg(data.msg || "Registration failed");
+        setLoading(false);
         return;
       }
 
-      localStorage.setItem("token", data.token);
-      navigate("/levels");
-    } catch (error) {
-      console.error("Register error:", error);
+      // نرسل المستخدم على صفحة التحقق مع تمرير الايميل
+      navigate("/verify", { state: { email: formData.email } });
+    } catch (err) {
+      console.error(err);
       setErrorMsg("Something went wrong! Please try again.");
     } finally {
       setLoading(false);
@@ -66,12 +64,9 @@ export default function RegisterPage() {
           Join <span className="font-semibold text-purple-400">Algo Arcade</span> and start your coding journey! 🚀
         </p>
 
-        {errorMsg && (
-          <div className="text-red-400 text-sm text-center font-medium">{errorMsg}</div>
-        )}
+        {errorMsg && <div className="text-red-400 text-sm text-center font-medium">{errorMsg}</div>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Name */}
           <div>
             <label className="block text-sm font-medium text-gray-300">Full Name</label>
             <input
@@ -84,7 +79,6 @@ export default function RegisterPage() {
             />
           </div>
 
-          {/* Username */}
           <div>
             <label className="block text-sm font-medium text-gray-300">Username</label>
             <input
@@ -97,7 +91,6 @@ export default function RegisterPage() {
             />
           </div>
 
-          {/* Email */}
           <div>
             <label className="block text-sm font-medium text-gray-300">Email Address</label>
             <input
@@ -110,7 +103,6 @@ export default function RegisterPage() {
             />
           </div>
 
-          {/* Password */}
           <div>
             <label className="block text-sm font-medium text-gray-300">Password</label>
             <input
@@ -123,7 +115,6 @@ export default function RegisterPage() {
             />
           </div>
 
-          {/* Mobile */}
           <div>
             <label className="block text-sm font-medium text-gray-300">Mobile</label>
             <input
@@ -137,7 +128,6 @@ export default function RegisterPage() {
             />
           </div>
 
-          {/* Gender */}
           <div>
             <label className="block text-sm font-medium text-gray-300">Gender</label>
             <select
@@ -153,7 +143,6 @@ export default function RegisterPage() {
             </select>
           </div>
 
-          {/* Birthday */}
           <div>
             <label className="block text-sm font-medium text-gray-300">Birthday</label>
             <input
@@ -164,12 +153,6 @@ export default function RegisterPage() {
               className="mt-1 w-full border border-gray-600 bg-gray-700 text-white rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 focus:outline-none transition"
             />
           </div>
-
-          {/* Role (hidden) */}
-          <input type="hidden" name="role" value={formData.role} />
-
-          {/* isVerified (hidden) */}
-          <input type="hidden" name="isVerified" value={formData.isVerified} />
 
           <button
             type="submit"
@@ -184,13 +167,12 @@ export default function RegisterPage() {
 
         <p className="text-center text-gray-400 text-sm sm:text-base">
           Already have an account?{" "}
-          <a
-            href="/login"
-            onClick={(e) => { e.preventDefault(); navigate("/login"); }}
-            className="text-purple-400 font-semibold hover:text-purple-300 transition cursor-pointer"
+          <span
+            onClick={() => navigate("/login")}
+            className="text-purple-400 font-semibold hover:text-purple-300 cursor-pointer"
           >
             Log in
-          </a>
+          </span>
         </p>
       </div>
     </div>

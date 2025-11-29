@@ -225,7 +225,7 @@ const About = () => {
             </p>
 
             {/* زر الفريق فقط */}
-            <TeamButton text="Meet Our Team" to="/team" className="mt-2" />
+            <TeamButton text="Meet Our Team" to="/pages/TeamPage" className="mt-2" />
 
           </div>
         </div>
