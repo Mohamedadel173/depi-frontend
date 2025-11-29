@@ -16,7 +16,6 @@ import Levels from "./components/Levels";
 import Quiz from "./components/Quiz";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import ShoppingPage from "./pages/ShoppingPage";
 import UserDashboard from "./pages/UserDashboard";
 
 const AppContent = () => {
@@ -49,11 +48,11 @@ const AppContent = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/verify" element={<EmailVerificationPage />} />
           <Route path="/user" element={<UserDashboard />} />
-          <Route path="/shop" element={<ShoppingPage />} />
+     
           <Route path="/levels" element={<Levels />} />
           <Route path="/blockly" element={<BlocklyComponent />} />
           <Route path="/quiz/:levelId" element={<Quiz setProgress={setProgress} />} />
-          <Route path="/team" element={<TeamPage />} />  {/* فقط مرة واحدة */}
+          <Route path="/team" element={<TeamPage />} />  
           <Route path="*" element={<div className="text-center text-white py-32 text-3xl">Page Not Found</div>} />
         </Routes>
       </div>
