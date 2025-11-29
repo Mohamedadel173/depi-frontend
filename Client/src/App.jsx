@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 // صفحات
 import TeamPage from "./pages/TeamPage";
 import EmailVerificationPage from "./pages/EmailVerificationPage";
-import Navbar from "./sections/navbar";
+import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
 import Testimonial from "./sections/Testimonial";

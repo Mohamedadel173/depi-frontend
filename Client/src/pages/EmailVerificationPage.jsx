@@ -60,7 +60,7 @@ const VerificationForm = ({ navigate }) => {
 
         try {
             const response = await fetch(
-                "https://depi-backend-five.vercel.app/auth/verify",
+                "https://depi-backend-yfok.vercel.app/auth/verify",
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
