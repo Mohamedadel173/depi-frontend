@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"; 
+<<<<<<< HEAD
 import Materials from "./components/Materials"; 
 
 import PurchasedLevels from "./components/PurchasedLevels";
 
 // pages
+=======
+
+// صفحات
+>>>>>>> 887a28a7f7203224a01675e58aef3c09483418b2
 import TeamPage from "./pages/TeamPage";
 import EmailVerificationPage from "./pages/EmailVerificationPage";
 import Navbar from "./sections/Navbar";
@@ -21,7 +26,10 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import UserDashboard from "./pages/UserDashboard";
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 887a28a7f7203224a01675e58aef3c09483418b2
 const AppContent = () => {
   const [progress, setProgress] = useState(0);
   const location = useLocation();
@@ -47,12 +55,20 @@ const AppContent = () => {
               </div>
             }
           />
+<<<<<<< HEAD
           <Route path="/materials" element={<Materials />} />
+=======
+
+>>>>>>> 887a28a7f7203224a01675e58aef3c09483418b2
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/verify" element={<EmailVerificationPage />} />
           <Route path="/user" element={<UserDashboard />} />
+<<<<<<< HEAD
           <Route path="/purchased-levels" element={<PurchasedLevels />} />
+=======
+     
+>>>>>>> 887a28a7f7203224a01675e58aef3c09483418b2
           <Route path="/levels" element={<Levels />} />
           <Route path="/blockly" element={<BlocklyComponent />} />
           <Route path="/quiz/:levelId" element={<Quiz setProgress={setProgress} />} />
