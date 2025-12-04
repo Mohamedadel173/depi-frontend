@@ -42,13 +42,15 @@ export default function PurchasedLevels() {
               >
                 Explore Levels
               </Link>
+              <a
+  href="https://wa.me/201220988237?text=Hi%20I%20need%20help"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="bg-pink-600 text-white px-4 py-3 rounded-xl hover:bg-pink-700 transition-all hover:shadow-lg hover:shadow-pink-400 font-semibold text-center"
+>
+  Needs Help
+</a>
 
-              <Link
-                to="/contact"
-                className="bg-pink-600 text-white px-4 py-3 rounded-xl hover:bg-pink-700 transition-all hover:shadow-lg hover:shadow-pink-400 font-semibold text-center"
-              >
-                Needs Help
-              </Link>
               <Link
     to="/materials"
     className="bg-gray-200 text-gray-700 px-4 py-3 rounded-xl hover:bg-gray-300 transition-all hover:shadow-lg hover:shadow-gray-200 font-semibold text-center"
@@ -86,12 +88,20 @@ export default function PurchasedLevels() {
                   </div>
 
                   <div className="p-4 flex flex-col gap-2">
-                    <Link
-                      to={level.id === 3 ? "/blockly" : `/quiz/${level.id}`}
-                      className="w-full py-2 rounded-lg bg-green-600 hover:bg-green-700 text-white text-center transition-all"
-                    >
-                      Start Level
-                    </Link>
+                    
+                  <Link
+  to={
+    level.id === 2
+      ? "/level2"
+      : level.id === 3
+      ? "/blockly"
+      : `/quiz/${level.id}`
+  }
+  className="w-full py-2 rounded-lg bg-green-600 hover:bg-green-700 text-white text-center transition-all"
+>
+  Start Level
+</Link>
+
                   </div>
                 </div>
               ))}

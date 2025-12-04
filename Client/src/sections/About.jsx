@@ -141,7 +141,6 @@ const About = () => {
 
   // ----------------------------
   // زر Meet Our Team
-  // ----------------------------
   const TeamButton = ({ text = "Meet Our Team", to = "/team", className = "" }) => (
     <Link
       to={to}
@@ -169,7 +168,7 @@ const About = () => {
     <section className="c-space section-spacing" id="about">
       <h2 className="text-heading">About US</h2>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-12">
-        
+
         {/* Grid 1 */}
         <div className="flex items-end grid-default-color grid-1 relative overflow-hidden p-6 rounded-xl md:col-span-3">
           <img
@@ -225,7 +224,7 @@ const About = () => {
             </p>
 
             {/* زر الفريق فقط */}
-            <TeamButton text="Meet Our Team" to="/pages/TeamPage" className="mt-2" />
+            <TeamButton text="Meet Our Team" to="/team" className="mt-2" />
 
           </div>
         </div>
