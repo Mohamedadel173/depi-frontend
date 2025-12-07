@@ -1,29 +1,42 @@
 import { useState } from "react";
 import { motion } from "motion/react";
+import { Link, useLocation } from "react-router-dom";
+
 function Navigation() {
+  const location = useLocation();
+
+  // نخفي الروابط في صفحات Hero و Login و Register
+  const hideLinks = ["/", "/login", "/register"].includes(location.pathname);
+
   return (
     <ul className="nav-ul">
       <li className="nav-li">
-        <a className="nav-link" href="#home">
-          Home
-        </a>
+        <a className="nav-link" href="#home">Home</a>
       </li>
       <li className="nav-li">
-        <a className="nav-link" href="#about">
-          About
-        </a>
+        <a className="nav-link" href="#about">About</a>
       </li>
-     
       <li className="nav-li">
-        <a className="nav-link" href="#contact">
-          Contact
-        </a>
+        <a className="nav-link" href="#contact">Contact</a>
       </li>
+
+      {!hideLinks && (
+        <>
+          <li className="nav-li">
+            <Link className="nav-link" to="/levels">Levels</Link>
+          </li>
+          <li className="nav-li">
+            <Link className="nav-link" to="/my-levels">My Levels</Link>
+          </li>
+        </>
+      )}
     </ul>
   );
 }
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="fixed inset-x-0 z-20 w-full backdrop-blur-lg bg-primary/40">
       <div className="mx-auto c-space max-w-7xl">

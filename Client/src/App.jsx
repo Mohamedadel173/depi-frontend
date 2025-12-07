@@ -47,6 +47,8 @@ const AppContent = () => {
               </div>
             }
           />
+          <Route path="/my-levels" element={<PurchasedLevels />} />
+          <Route path="/Levels" element={<Levels />} />
           <Route path="/level2" element={<Level2Patterns />} />
           <Route path="/materials" element={<Materials />} />
           <Route path="/login" element={<Login />} />

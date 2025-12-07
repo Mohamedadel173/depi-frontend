@@ -28,7 +28,7 @@ const teamMembers = [
     email: "Salma Refeat@gmail.com",
     image: "/src/assets/Salma_Refat.png",
     placeholderColor: "7A57DB", // Lavender
-    rating: 4,
+    rating: 5,
   },
   {
     id: 4,
@@ -46,7 +46,7 @@ const teamMembers = [
     email: "Ahmed Tawfik@gmail.com",
     image: "/src/assets/AhmedTawfikPhoto.png",
     placeholderColor: "CA2F8C",
-    rating: 4,
+    rating: 5,
   },
 ];
 
